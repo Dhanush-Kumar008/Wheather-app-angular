@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title> />
+  </head>
+  <body >
+      <div class="inp-div" (submit)="getWeather(placename)">
+        <input type="text" [(ngModel)]="placename" placeholder="Search here....." >
+        <div class="search-glass" (click)="getWeather(placename)" ><i class="fa-solid fa-magnifying-glass-location"></i></div>
+      </div>
+
+      <div class="container" *ngIf="WeatherData" >
+      <div class="upper-data">
+        <img src="../assets/coldimg.jpg" *ngIf="WeatherData.main.temp<15" />
+        <img src="../assets/summerimg.jpg" *ngIf="WeatherData.main.temp>=15" />
+
+        <div class="loc-temp">
+          <div>{{WeatherData.sys.country}}</div>
+          <div class="location">{{WeatherData.name}}</div>
+          <div class="location-temp">
+            {{WeatherData.main.temp}}°C
+          </div>
+        </div>
+      </div>
+
+      <div class="info-container">
+        <div class="info-msg">
+          <span>More Information</span>
+        </div>
+
+        <div class="lower-data">
+          <div class="info-label">
+            <div class="info-label-1">
+              <img src="../assets/mintemp.jpg" alt="" />
+              <span>{{WeatherData.main.temp_min}}°C</span>
+            </div>
+            <div class="span">
+              <span>min temp</span>
+            </div>
+          </div>
+
+          <div class="info-label">
+            <div class="info-label-1">
+              <img src="../assets/maxtemp.jpg" alt="" />
+              <span>{{WeatherData.main.temp_max}}°C</span>
+            </div>
+            <div class="span">
+              <span>max temp</span>
+            </div>
+          </div>
+
+          <div class="info-label">
+            <div class="info-label-1">
+              <img src="../assets/humidityimg.jpg" alt="" />
+              <span>{{WeatherData.main.humidity}}%</span>
+            </div>
+            <div class="span">
+              <span>humidity</span>
+            </div>
+          </div>
+
+          <div class="info-label">
+            <div class="info-label-1">
+              <img src="../assets/windimg.jpg" alt="" />
+              <span>{{WeatherData.wind.speed}}km/hr</span>
+            </div>
+            <div class="span">
+              <span>wind</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
